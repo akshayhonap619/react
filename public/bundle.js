@@ -952,7 +952,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 _reactDom2.default.render(_react2.default.createElement(
   "h1",
-  null,
+  { className: "hello", style: { background: "yellow", color: "green" } },
   "Hello"
 ), document.getElementById("test"));
 
