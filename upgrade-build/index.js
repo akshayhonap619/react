@@ -1,10 +1,18 @@
 import React from "react"
-
+import {SkiDay} from "./components/SkiDayCount"
 import ReactDOM from "react-dom"
 
+window.React = React;
+
 ReactDOM.render(
-    <h1 className="hello" style={{background:"yellow", color:"green"}}>
-      Hello
-    </h1>,
+    <div>
+
+     <SkiDay/>
+
+      <h1 className="he" style={{color:"green", backgroundColor:"yellow", width:"50%"}}>
+          SkiDay
+      </h1>
+
+    </div>   ,
     document.getElementById("test")
 )
