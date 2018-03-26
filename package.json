@@ -17,8 +17,10 @@
     "css-loader": "^0.28.11",
     "express": "^4.16.3",
     "json-loader": "^0.5.7",
+    "npm": "^5.8.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-icons": "^2.2.7",
     "style-loader": "^0.20.3",
     "webpack": "^3.10.0"
   },

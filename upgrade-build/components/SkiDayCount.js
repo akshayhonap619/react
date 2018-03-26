@@ -1,22 +1,36 @@
 /**
  * Created by Akshay on 3/25/2018.
  */
- import React from 'react'
 
-export class SkiDay extends React.Component{
-    render() {
-        return (
-            <div className="ski-day-count">
-                <div className="total-days">
-                    <span>5 days</span>
-                </div>
-                <div className="powder-days">
-                    <span>2 days</span>
-                </div>
-                <div className="backcountry-days">
-                    <span>1 hiking day</span>
-                </div>
-            </div>
-        )
-    }
+import Snow from  "react-icons/lib/ti/weather-snow"
+
+function decimalToPerc(num){
+    return num*100;
 }
+
+function calculate(total,goal){
+    return total/goal;
+}
+
+export const SkiDayCount =(props) => (
+    <div>
+        <div className="total-days">
+            <span>{props.total.toString()}</span>
+        </div>
+
+        <div className="powder-days">
+            <span>{props.powder} days</span>
+            <Snow/>
+        </div>
+
+        <div className="backcountry-days">
+            <span>{props.country}</span>
+        </div>
+
+        <div>
+            <span>{decimalToPerc(calculate(props.total, props.goal))} %  Progress</span>
+        </div>
+
+    </div>
+)
+
