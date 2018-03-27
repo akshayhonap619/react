@@ -5,17 +5,15 @@ import {SkiDayRow} from "./SkiDayRow";
 
 export const SkiDayList = (props) => (
      <table border="2">
+         <tbody>
          {
              props.days.map((day, i )=> (
                  <SkiDayRow num={i}
                             key={i}
                             day={day}
                  />
-             ) )
-
-
-
+             ))
          }
-
+         </tbody>
      </table>
 )

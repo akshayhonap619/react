@@ -9,7 +9,7 @@ export const SkiDayRow = (props)=>
                 {props.num}
             </td>
         <td>
-            {props.day.date.toDateString()}
+            {props.day.date}
         </td>
         <td>
             {props.day.resort}

@@ -1,0 +1,21 @@
+{
+  "days" : [{
+    "resort" : "Sqaw Valley",
+    "date": "1/2/2017",
+    "powder": true,
+    "backcountry": false
+  },
+    {
+      "resort" : "KirkWood",
+      "date": "3/28/2017",
+      "powder": false,
+      "backcountry": false
+    },
+    {
+      "resort" : "Mt. Tallac",
+      "date": "1/2/2017",
+      "powder": false,
+      "backcountry": true
+    }
+  ]
+}

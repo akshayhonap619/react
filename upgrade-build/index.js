@@ -2,35 +2,17 @@ import React from "react"
 import {SkiDayCount} from "./components/SkiDayCount"
 import {SkiDay} from "./components/SkiDay"
 import {SkiDayList} from "./components/SkiDayList";
+import {State} from "./components/State"
+import {Counter} from "./components/Counter";
 
+import text from "./data/days"
 import ReactDOM from "react-dom"
 
 window.React = React;
 
 ReactDOM.render(
     <div>
-        <SkiDayList days={
-            [
-                {
-                    resort : "Sqaw Valley",
-                    date: new Date("1/2/2017"),
-                    powder: true,
-                    backcountry: false
-                },
-                {
-                    resort : "KirkWood",
-                    date: new Date("3/28/2017"),
-                    powder: false,
-                    backcountry: false
-                },
-                {
-                    resort : "Mt. Tallac",
-                    date: new Date("1/2/2017"),
-                    powder: false,
-                    backcountry: true
-                }
-            ]
-        } />
+        <SkiDayList days= {text.days} />
 
 
       <h1 className="he" style={{color:"green", backgroundColor:"yellow", width:"50%"}}>
@@ -41,6 +23,11 @@ ReactDOM.render(
                 powder={20}
                 country={30}
                 goal={100}/>
+
+
+        <State />
+
+        <Counter/>
 
     </div>   ,
     document.getElementById("test")
