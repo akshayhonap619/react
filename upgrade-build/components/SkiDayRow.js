@@ -5,8 +5,11 @@ import Calander from 'react-icons/lib/fa/calendar'
 export const SkiDayRow = (props)=>
 (
     <tr>
+            <td>
+                {props.num}
+            </td>
         <td>
-            {props.day.date}
+            {props.day.date.toDateString()}
         </td>
         <td>
             {props.day.resort}

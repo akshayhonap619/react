@@ -3,11 +3,12 @@ import Snow from 'react-icons/lib/ti/weather-snow'
 import Calander from 'react-icons/lib/fa/calendar'
 import {SkiDayRow} from "./SkiDayRow";
 
-export const SkiDayList = ({props}) => (
+export const SkiDayList = (props) => (
      <table border="2">
          {
              props.days.map((day, i )=> (
-                 <SkiDayRow key={i}
+                 <SkiDayRow num={i}
+                            key={i}
                             day={day}
                  />
              ) )

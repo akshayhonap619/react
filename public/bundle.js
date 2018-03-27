@@ -2610,7 +2610,8 @@ function calculate(total, goal) {
     return total / goal;
 }
 
-var SkiDayCount = exports.SkiDayCount = function SkiDayCount(props) {
+var SkiDayCount = exports.SkiDayCount = function SkiDayCount(props, _ref) {
+    var total = _ref.total;
     return React.createElement(
         "div",
         null,
@@ -2620,7 +2621,7 @@ var SkiDayCount = exports.SkiDayCount = function SkiDayCount(props) {
             React.createElement(
                 "span",
                 null,
-                props.total.toString()
+                total
             )
         ),
         React.createElement(
@@ -3352,13 +3353,13 @@ var _SkiDayRow = __webpack_require__(28);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var SkiDayList = exports.SkiDayList = function SkiDayList(_ref) {
-    var props = _ref.props;
+var SkiDayList = exports.SkiDayList = function SkiDayList(props) {
     return React.createElement(
         'table',
         { border: '2' },
         props.days.map(function (day, i) {
-            return React.createElement(_SkiDayRow.SkiDayRow, { key: i,
+            return React.createElement(_SkiDayRow.SkiDayRow, { num: i,
+                key: i,
                 day: day
             });
         })
@@ -3398,7 +3399,12 @@ var SkiDayRow = exports.SkiDayRow = function SkiDayRow(props) {
         React.createElement(
             'td',
             null,
-            props.day.date
+            props.num
+        ),
+        React.createElement(
+            'td',
+            null,
+            props.day.date.toDateString()
         ),
         React.createElement(
             'td',

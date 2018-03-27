@@ -12,10 +12,10 @@ function calculate(total,goal){
     return total/goal;
 }
 
-export const SkiDayCount =(props) => (
+export const SkiDayCount =(props, { total}) => (
     <div>
         <div className="total-days">
-            <span>{props.total.toString()}</span>
+            <span>{total}</span>
         </div>
 
         <div className="powder-days">
