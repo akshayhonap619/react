@@ -32,3 +32,8 @@ ReactDOM.render(
     </div>   ,
     document.getElementById("test")
 )
+
+ReactDOM.render(
+    <Counter/>,
+    document.getElementById("counter")
+)

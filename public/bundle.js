@@ -1960,21 +1960,23 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 window.React = _react2.default;
 
 _reactDom2.default.render(_react2.default.createElement(
-        "div",
-        null,
-        _react2.default.createElement(_SkiDayList.SkiDayList, { days: _days2.default.days }),
-        _react2.default.createElement(
-                "h1",
-                { className: "he", style: { color: "green", backgroundColor: "yellow", width: "50%" } },
-                "SkiDay"
-        ),
-        _react2.default.createElement(_SkiDayCount.SkiDayCount, { total: 50,
-                powder: 20,
-                country: 30,
-                goal: 100 }),
-        _react2.default.createElement(_State.State, null),
-        _react2.default.createElement(_Counter.Counter, null)
+    "div",
+    null,
+    _react2.default.createElement(_SkiDayList.SkiDayList, { days: _days2.default.days }),
+    _react2.default.createElement(
+        "h1",
+        { className: "he", style: { color: "green", backgroundColor: "yellow", width: "50%" } },
+        "SkiDay"
+    ),
+    _react2.default.createElement(_SkiDayCount.SkiDayCount, { total: 50,
+        powder: 20,
+        country: 30,
+        goal: 100 }),
+    _react2.default.createElement(_State.State, null),
+    _react2.default.createElement(_Counter.Counter, null)
 ), document.getElementById("test"));
+
+_reactDom2.default.render(_react2.default.createElement(_Counter.Counter, null), document.getElementById("counter"));
 
 /***/ }),
 /* 30 */
@@ -4210,7 +4212,10 @@ var Counter = exports.Counter = function (_React$Component) {
 
         var _this = _possibleConstructorReturn(this, (Counter.__proto__ || Object.getPrototypeOf(Counter)).call(this, props));
 
-        _this.state = { counter: 0 };
+        _this.state = {
+            counter: []
+            //counter : [{"cache_run_id":1118,"status":"Active","hierarchy_id":3,"name":"GICS Sectors","start_date":"1980-01-01T00:00:00","end_date":"2018-02-22T00:00:00","periodicity":2},{"cache_run_id":1128,"status":"Active","hierarchy_id":3,"name":"GICS Sectors","start_date":"1980-01-01T00:00:00","end_date":"2018-02-23T00:00:00","periodicity":1},{"cache_run_id":1129,"status":"Active","hierarchy_id":7,"name":"GICS Groups","start_date":"1980-01-01T00:00:00","end_date":"2018-02-23T00:00:00","periodicity":1},{"cache_run_id":1132,"status":"Active","hierarchy_id":7,"name":"GICS Groups","start_date":"1980-01-01T00:00:00","end_date":"2018-02-27T00:00:00","periodicity":2},{"cache_run_id":1105,"status":"NoChange","hierarchy_id":12,"name":"Resources","start_date":"2018-01-20T00:00:00","end_date":"2018-02-20T00:00:00","periodicity":2},{"cache_run_id":1120,"status":"Active","hierarchy_id":100,"name":"Climate Change","start_date":"1980-01-01T00:00:00","end_date":"2018-02-22T00:00:00","periodicity":2},{"cache_run_id":1139,"status":"NoChange","hierarchy_id":109,"name":"Real Assets","start_date":"1980-01-01T00:00:00","end_date":"2018-03-03T00:00:00","periodicity":1},{"cache_run_id":1158,"status":"Active","hierarchy_id":109,"name":"Real Assets","start_date":"1980-01-01T00:00:00","end_date":"2018-03-27T00:00:00","periodicity":1},{"cache_run_id":1125,"status":"Active","hierarchy_id":109,"name":"Real Assets","start_date":"1980-01-01T00:00:00","end_date":"2018-02-21T00:00:00","periodicity":2},{"cache_run_id":1121,"status":"Active","hierarchy_id":110,"name":"Resource - Real Assets","start_date":"1980-01-01T00:00:00","end_date":"2018-02-22T00:00:00","periodicity":2},{"cache_run_id":1123,"status":"NoChange","hierarchy_id":110,"name":"Resource - Real Assets","start_date":"2017-01-01T00:00:00","end_date":"2018-01-01T00:00:00","periodicity":2},{"cache_run_id":1112,"status":"Active","hierarchy_id":1278,"name":"Sajeev-Test","start_date":"1980-01-01T00:00:00","end_date":"2018-02-21T00:00:00","periodicity":2},{"cache_run_id":1113,"status":"NoChange","hierarchy_id":1278,"name":"Sajeev-Test","start_date":"1980-01-01T00:00:00","end_date":"2018-02-21T00:00:00","periodicity":2},{"cache_run_id":1115,"status":"NoChange","hierarchy_id":1278,"name":"Sajeev-Test","start_date":"1980-01-01T00:00:00","end_date":"2018-02-21T00:00:00","periodicity":2},{"cache_run_id":1101,"status":"Active","hierarchy_id":1278,"name":"Sajeev-Test","start_date":"2017-02-19T00:00:00","end_date":"2018-02-17T00:00:00","periodicity":1}]
+        };
         return _this;
     }
 
@@ -4219,13 +4224,13 @@ var Counter = exports.Counter = function (_React$Component) {
         value: function componentDidMount() {
             var _this2 = this;
 
-            var url = "/c";
+            var url = "/api/Cache/G";
 
             _axios2.default.get(url).then(function (response) {
                 _this2.setState({
                     counter: response.data
                 });
-                console.log(response.data);
+                //console.log(response.data);
             });
         }
     }, {
@@ -4235,13 +4240,11 @@ var Counter = exports.Counter = function (_React$Component) {
             return _react2.default.createElement(
                 "div",
                 null,
-                _react2.default.createElement(Button, { value: "increment" }),
-                _react2.default.createElement(Button, { value: "decrement" }),
-                _react2.default.createElement(
-                    "p",
-                    null,
-                    this.state.counter[0].cache_run_id
-                )
+                this.state.counter.map(function (single, i) {
+                    return _react2.default.createElement(News, { obj: single,
+                        key: i
+                    });
+                })
             );
         }
     }]);
@@ -4249,17 +4252,22 @@ var Counter = exports.Counter = function (_React$Component) {
     return Counter;
 }(_react2.default.Component);
 
-var Button = function Button(props) {
+var News = function News(props) {
     return _react2.default.createElement(
-        "button",
+        "div",
         null,
-        props.value
+        _react2.default.createElement(
+            "p",
+            null,
+            props.obj.cache_run_id
+        ),
+        _react2.default.createElement(
+            "p",
+            null,
+            props.obj.status
+        )
     );
 };
-
-function inc(num) {
-    return num++;
-}
 
 /***/ }),
 /* 39 */
