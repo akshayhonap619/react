@@ -2,10 +2,13 @@ var webpack = require("webpack");
 var path = require('path');
 
 module.exports = {
-    entry: "./upgrade-build/index.js",
+    entry: {
+        index:  "./upgrade-build/index.js",
+        script: "./upgrade-build/script.js"
+    },
     output: {
 
-        filename: "bundle.js",
+        filename: "[name].js",
         path: path.resolve(__dirname, 'public')
 
     },
