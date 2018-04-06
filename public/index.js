@@ -2799,6 +2799,8 @@ var Counter = exports.Counter = function (_React$Component) {
             counter: 0
         };
         _this.increase = _this.increase.bind(_this);
+        _this.decrease = _this.decrease.bind(_this);
+        _this.reset = _this.reset.bind(_this);
         return _this;
     }
 
@@ -2811,12 +2813,32 @@ var Counter = exports.Counter = function (_React$Component) {
             });
         }
     }, {
+        key: "reset",
+        value: function reset() {
+            this.setState({
+                counter: 0
+            });
+        }
+    }, {
+        key: "decrease",
+        value: function decrease() {
+            this.setState({
+                counter: this.state.counter == 0 ? 0 : this.state.counter - 1
+            });
+        }
+    }, {
         key: "render",
         value: function render() {
             return _react2.default.createElement(
                 "div",
                 null,
-                this.state.counter,
+                _react2.default.createElement(
+                    "h2",
+                    null,
+                    " ",
+                    this.state.counter,
+                    " "
+                ),
                 _react2.default.createElement(
                     "button",
                     { onClick: this.increase, className: "btn btn-success" },
@@ -2824,12 +2846,12 @@ var Counter = exports.Counter = function (_React$Component) {
                 ),
                 _react2.default.createElement(
                     "button",
-                    { className: "btn btn-danger" },
+                    { onClick: this.decrease, className: "btn btn-danger" },
                     " - "
                 ),
                 _react2.default.createElement(
                     "button",
-                    { className: "btn btn-warning" },
+                    { onClick: this.reset, className: "btn btn-warning" },
                     " 0 "
                 )
             );

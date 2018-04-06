@@ -2386,6 +2386,8 @@ var Counter = exports.Counter = function (_React$Component) {
             counter: 0
         };
         _this.increase = _this.increase.bind(_this);
+        _this.decrease = _this.decrease.bind(_this);
+        _this.reset = _this.reset.bind(_this);
         return _this;
     }
 
@@ -2398,12 +2400,32 @@ var Counter = exports.Counter = function (_React$Component) {
             });
         }
     }, {
+        key: "reset",
+        value: function reset() {
+            this.setState({
+                counter: 0
+            });
+        }
+    }, {
+        key: "decrease",
+        value: function decrease() {
+            this.setState({
+                counter: this.state.counter == 0 ? 0 : this.state.counter - 1
+            });
+        }
+    }, {
         key: "render",
         value: function render() {
             return _react2.default.createElement(
                 "div",
                 null,
-                this.state.counter,
+                _react2.default.createElement(
+                    "h2",
+                    null,
+                    " ",
+                    this.state.counter,
+                    " "
+                ),
                 _react2.default.createElement(
                     "button",
                     { onClick: this.increase, className: "btn btn-success" },
@@ -2411,12 +2433,12 @@ var Counter = exports.Counter = function (_React$Component) {
                 ),
                 _react2.default.createElement(
                     "button",
-                    { className: "btn btn-danger" },
+                    { onClick: this.decrease, className: "btn btn-danger" },
                     " - "
                 ),
                 _react2.default.createElement(
                     "button",
-                    { className: "btn btn-warning" },
+                    { onClick: this.reset, className: "btn btn-warning" },
                     " 0 "
                 )
             );
@@ -19005,6 +19027,8 @@ var _reactDom2 = _interopRequireDefault(_reactDom);
 
 var _Counter = __webpack_require__(20);
 
+var _Calculator = __webpack_require__(79);
+
 __webpack_require__(22);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -19031,6 +19055,101 @@ function tick() {
 setInterval(tick, 1000);
 
 _reactDom2.default.render(_react2.default.createElement(_Counter.Counter, null), document.getElementById("counter"));
+
+_reactDom2.default.render(_react2.default.createElement(_Calculator.Calculator, null), document.getElementById("calc"));
+
+/***/ }),
+/* 79 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.Calculator = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Calculator = exports.Calculator = function (_React$Component) {
+    _inherits(Calculator, _React$Component);
+
+    function Calculator(props) {
+        _classCallCheck(this, Calculator);
+
+        var _this = _possibleConstructorReturn(this, (Calculator.__proto__ || Object.getPrototypeOf(Calculator)).call(this, props));
+
+        _this.state = {
+            temperature: 10,
+            scale: 'c'
+        };
+        _this.changeEvent = _this.changeEvent.bind(_this);
+
+        return _this;
+    }
+
+    _createClass(Calculator, [{
+        key: 'changeEvent',
+        value: function changeEvent(event, field) {
+            this.setState({
+                temperature: event.target.value,
+                scale: field
+            });
+        }
+    }, {
+        key: 'setCelciusValue',
+        value: function setCelciusValue() {
+            return this.state.scale == 'f' ? (this.state.temperature - 32) * 5 / 9 : this.state.temperature;
+        }
+    }, {
+        key: 'setFarValue',
+        value: function setFarValue() {
+            return this.state.scale == 'c' ? this.state.temperature * 5 / 9 + 32 : this.state.temperature;
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'form',
+                null,
+                _react2.default.createElement(Temperature, { scale: 'c', value: this.setCelciusValue(), change: this.changeEvent }),
+                _react2.default.createElement(Temperature, { scale: 'f', value: this.setFarValue(), change: this.changeEvent })
+            );
+        }
+    }]);
+
+    return Calculator;
+}(_react2.default.Component);
+
+var Temperature = function Temperature(props) {
+    return _react2.default.createElement(
+        'div',
+        null,
+        console.log("value is " + props.value),
+        _react2.default.createElement(
+            'p',
+            null,
+            'Enter temperature in ',
+            props.scale
+        ),
+        _react2.default.createElement('input', { type: 'text', value: props.value, placeholder: props.scale + " value", onChange: function onChange(e) {
+                return props.change(e, props.scale);
+            } })
+    );
+};
 
 /***/ })
 /******/ ]);

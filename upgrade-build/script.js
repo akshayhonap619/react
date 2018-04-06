@@ -1,6 +1,7 @@
 import React from "react"
 import ReactDOM from "react-dom"
 import {Counter} from "./components/Counter"
+import {Calculator} from "./components/Calculator";
 
 import "bootstrap/dist/css/bootstrap.min.css"
 
@@ -24,3 +25,10 @@ ReactDOM.render(
     <Counter/>,
     document.getElementById("counter")
 );
+
+
+
+ReactDOM.render(
+    <Calculator/>,
+    document.getElementById("calc")
+)
