@@ -49,4 +49,3 @@ const Temperature = (props)=>(
     </div>
 )
 
-
