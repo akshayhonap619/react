@@ -57,14 +57,35 @@ export class Member extends React.Component{
 }
 
 //Posts as a stateless component
-const Posts=(props)=>(
-    <div>
-        {console.log(props)}
-        {props.posts.map((post,i)=>
-            <Post post={post} key={i}/>
-        )}
-    </div>
-)
+// const Posts=(props)=>(
+//     <div>
+//         {console.log(props)}
+//         {props.posts.map((post,i)=>
+//             <Post post={post} key={i}/>
+//         )}
+//     </div>
+// )
+
+//Posts as a stateful component
+
+class Posts extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            posts: props.posts
+        }
+    }
+
+    render(){
+       return (
+                <div>
+                    {this.state.posts.map((post,i)=>
+                    <Post post={post} key={i}/>
+                    )}
+                </div>
+       )
+    }
+}
 
 
 const Post=(props)=>(

@@ -20808,18 +20808,46 @@ var Member = exports.Member = function (_React$Component) {
 }(_react2.default.Component);
 
 //Posts as a stateless component
+// const Posts=(props)=>(
+//     <div>
+//         {console.log(props)}
+//         {props.posts.map((post,i)=>
+//             <Post post={post} key={i}/>
+//         )}
+//     </div>
+// )
 
+//Posts as a stateful component
 
-var Posts = function Posts(props) {
-    return _react2.default.createElement(
-        "div",
-        null,
-        console.log(props),
-        props.posts.map(function (post, i) {
-            return _react2.default.createElement(Post, { post: post, key: i });
-        })
-    );
-};
+var Posts = function (_React$Component2) {
+    _inherits(Posts, _React$Component2);
+
+    function Posts(props) {
+        _classCallCheck(this, Posts);
+
+        var _this3 = _possibleConstructorReturn(this, (Posts.__proto__ || Object.getPrototypeOf(Posts)).call(this, props));
+
+        _this3.state = {
+            posts: props.posts
+        };
+        return _this3;
+    }
+
+    _createClass(Posts, [{
+        key: "render",
+        value: function render() {
+            return _react2.default.createElement(
+                "div",
+                null,
+                this.state.posts.map(function (post, i) {
+                    return _react2.default.createElement(Post, { post: post, key: i });
+                })
+            );
+        }
+    }]);
+
+    return Posts;
+}(_react2.default.Component);
 
 var Post = function Post(props) {
     return _react2.default.createElement(
