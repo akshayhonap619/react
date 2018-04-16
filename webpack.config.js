@@ -4,7 +4,8 @@ var path = require('path');
 module.exports = {
     entry: {
         index:  "./upgrade-build/index.js",
-        script: "./upgrade-build/script.js"
+        script: "./upgrade-build/script.js",
+          main: "./upgrade-build/main.js"
     },
     output: {
 

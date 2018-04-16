@@ -5,6 +5,7 @@ import {Calculator} from "./components/Calculator";
 import {Member} from "./components/Member";
 
 import "bootstrap/dist/css/bootstrap.min.css"
+import {Main} from "./components/Main";
 
 function tick() {
     const Clock = (
@@ -38,3 +39,5 @@ ReactDOM.render(
     <Member/>,
     document.getElementById("member")
 )
+
+
