@@ -8,6 +8,8 @@ import Check from "react-icons/lib/go/check"
 import Calander from "react-icons/lib/go/calendar"
 import Info from "react-icons/lib/io/informatcircled"
 import Account from "react-icons/lib/md/account-circle"
+import {Node} from './Node'
+import ReactDOM from 'react-dom'
 
 var hdate = require('human-date')
 
@@ -17,6 +19,7 @@ export class Cache extends React.Component{
         this.state = {
             cache : []
         }
+        this.getNodes = this.getNodes.bind(this);
     }
 
     componentDidMount(){
@@ -29,6 +32,13 @@ export class Cache extends React.Component{
               })
     }
 
+    getNodes(event,item){
+        ReactDOM.render(
+            <Node name={item}/>,
+            document.getElementById("node")
+        )
+    }
+
     render(){
         return (
             <div>
@@ -37,7 +47,7 @@ export class Cache extends React.Component{
                     <TableHead/>
                 {
                     this.state.cache.map((item,i)=>(
-                        <TableRow item={item} key={i} />
+                        <TableRow item={item} key={i} click={this.getNodes} />
                         )
 
                     )
@@ -54,7 +64,7 @@ const TableRow = (props)=>(
         <div className="row">
 
             <div className="col-4">
-                <a href=""> {props.item.name} </a>
+                <a onClick={(e)=>props.click(e,props.item.name)}> {props.item.name} </a>
             </div>
 
             <div className="col-3">

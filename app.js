@@ -17,7 +17,8 @@ app.get("/api/Cache/G", function (req, res){
    );
 });
 
-app.get("/api/N",function (req,res) {
+app.get("/api/Nodes",function (req,res) {
+    console.log(req.query)
     res.send(
         [{"name":"Energy","node_id":4},{"name":"Materials","node_id":5},{"name":"Industrials","node_id":6},{"name":"Consumer Discretionary","node_id":7},{"name":"Consumer Staples","node_id":8},{"name":"Health Care","node_id":9},{"name":"Financials","node_id":10},{"name":"Information Technology","node_id":11},{"name":"Telecommunication Services","node_id":12},{"name":"Utilities","node_id":13},{"name":"Real Estate","node_id":5215}]
     );
