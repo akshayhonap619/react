@@ -4,32 +4,41 @@
 import React from 'react'
 import axios from 'axios'
 
-export class Node extends React.Component
-{
-    constructor(props){
-        super(props);
-        console.log("props "+props.name)
-        this.state = {
-            name : props.name
+import {TableHead} from "./Main";
+
+
+export const Node =(props)=>(
+    <div>
+        { (props.data.length!=0)?
+            <TableHead head1="Name" head2="Node id"/> :
+            <h6>No Node data</h6>
         }
-    }
 
-    componentDidMount(){
-        const url = "api/Nodes?id="+this.state.name;
+        {
+            props.data.map((item, i) => (
+                <NodeRow item={item} key={i}/>
 
-        axios.get(url).then((response)=>{
-            this.setState({
-                node : response.data
-            })
-            console.log(response.data)
-        })
-    }
+            ))
+        }
 
-    render(){
-        return(
-            <div>
-                {this.state.name}
+    </div>
+)
+
+
+const NodeRow=(props)=>(
+    <li className="list-group-item">
+        <div className="container-fluid">
+            <div className="row">
+
+                <div className="col-3">
+                    <a href="#"> {props.item.name} </a>
+                </div>
+
+                <div className="col-3">
+                    { props.item.node_id}
+                </div>
+
             </div>
-        )
-    }
-}
+        </div>
+    </li>
+)
