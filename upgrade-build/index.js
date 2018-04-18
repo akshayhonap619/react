@@ -7,17 +7,17 @@ import {Counter} from "./components/Counter";
 import {Cache} from "./components/Cache";
 
 import 'bootstrap/dist/css/bootstrap.min.css'
-
+import {App} from "./components/App"
 import text from "./data/days"
 import ReactDOM from "react-dom"
 
 window.React = React;
 
-
 ReactDOM.render(
-    <Cache/>,
-    document.getElementById('cache')
-)
+     <App/>,
+     document.getElementById('app')
+ )
+
 
 
 

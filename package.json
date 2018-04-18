@@ -24,6 +24,8 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-icons": "^2.2.7",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.0",
     "style-loader": "^0.20.3",
     "webpack": "^3.10.0"
   },
