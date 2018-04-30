@@ -5,7 +5,8 @@ module.exports = {
     entry: {
         index:  "./upgrade-build/index.js",
         script: "./upgrade-build/script.js",
-          main: "./upgrade-build/main.js"
+          main: "./upgrade-build/main.js",
+        redux: "./upgrade-build/redux.js"
     },
     output: {
 
