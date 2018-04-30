@@ -282,35 +282,21 @@ var store = (0, _redux.createStore)(function () {
 
 console.log(store.getState());
 
-store.dispatch({
-    type: 'INCREMENT'
-});
+var incrementCount = function incrementCount(_ref) {
+    var incrementBy = _ref.incrementBy;
 
+    return {
+        type: "INCREMENT",
+        count: incrementBy
+    };
+};
 store.subscribe(function () {
     return console.log(store.getState());
 });
 
-var book = {
-    title: "Title",
-    author: "Author",
-    publisher: {
-        name: "Peng",
-        age: 10
-    }
-};
-var _book$publisher = book.publisher,
-    _book$publisher$name = _book$publisher.name,
-    publisherName = _book$publisher$name === undefined ? "anonymous" : _book$publisher$name,
-    age = _book$publisher.age,
-    _book$publisher$gende = _book$publisher.gender,
-    gender = _book$publisher$gende === undefined ? 'male' : _book$publisher$gende;
+store.dispatch(incrementCount({ incrementBy: 5 }));
 
-
-var item = ["coffee", '2', '2.50', '3'];
-
-var small_price = item[1];
-
-console.log(small_price);
+//Action Creaters
 
 /***/ }),
 

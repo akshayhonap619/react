@@ -5,14 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="37b23629-19ab-400f-b7a0-7aa1be531d91" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/index2.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/upgrade-build/redux.js" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
-      <change beforePath="$PROJECT_DIR$/public/index.js" afterPath="$PROJECT_DIR$/public/index.js" />
-      <change beforePath="$PROJECT_DIR$/public/main.js" afterPath="$PROJECT_DIR$/public/main.js" />
-      <change beforePath="$PROJECT_DIR$/public/script.js" afterPath="$PROJECT_DIR$/public/script.js" />
-      <change beforePath="$PROJECT_DIR$/webpack.config.js" afterPath="$PROJECT_DIR$/webpack.config.js" />
+      <change beforePath="$PROJECT_DIR$/public/redux.js" afterPath="$PROJECT_DIR$/public/redux.js" />
+      <change beforePath="$PROJECT_DIR$/upgrade-build/redux.js" afterPath="$PROJECT_DIR$/upgrade-build/redux.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -91,8 +86,8 @@
       <file leaf-file-name="redux.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/upgrade-build/redux.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="362">
-              <caret line="23" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+            <state relative-caret-position="459">
+              <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -353,12 +348,12 @@
       <workItem from="1523284295204" duration="20366000" />
       <workItem from="1523847403038" duration="4604000" />
       <workItem from="1524493504146" duration="4001000" />
-      <workItem from="1525105929143" duration="8231000" />
+      <workItem from="1525105929143" duration="8932000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="153448000" />
+    <option name="totallyTimeSpent" value="154149000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
@@ -752,8 +747,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/upgrade-build/redux.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="23" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+        <state relative-caret-position="459">
+          <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
           <folding />
         </state>
       </provider>

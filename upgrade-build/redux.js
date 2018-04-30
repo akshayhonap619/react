@@ -17,19 +17,18 @@ const store = createStore((state = {count : 0},action)=>{
 
 console.log(store.getState())
 
-store.dispatch(
-    {
-        type : 'INCREMENT'
-    })
 
-
+const incrementCount = ({incrementBy})=>{
+    return{
+        type : "INCREMENT",
+        count : incrementBy
+    }
+}
 store.subscribe(()=>console.log(store.getState()))
+
+store.dispatch(incrementCount({incrementBy : 5}))
+
+
 
 
 //Action Creaters
-const incrementCount = ({incrementBy})=>{
-  return{
-        type : "INCREMENT",
-        count : incrementBy
-}
-}
