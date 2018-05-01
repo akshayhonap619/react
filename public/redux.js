@@ -271,30 +271,83 @@ var store = (0, _redux.createStore)(function () {
     switch (action.type) {
         case 'INCREMENT':
             return {
-                count: state.count + 1
+                count: state.count + action.incrementBy
             };
+
+        case 'DECREMENT':
+            return {
+                count: state.count - action.decreaseBy
+            };
+
+        case 'SET':
+            return {
+                count: action.value
+            };
+        case 'RESET':
+            return {
+                count: 0
+            };
+
         default:
             return state;
     }
-
-    return state;
 });
 
 console.log(store.getState());
 
-var incrementCount = function incrementCount(_ref) {
-    var incrementBy = _ref.incrementBy;
-
+//Action Generators
+var incrementCount = function incrementCount() {
+    var incrementBy = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
     return {
+
         type: "INCREMENT",
-        count: incrementBy
+        incrementBy: incrementBy
     };
 };
+
+var decrementCount = function decrementCount() {
+    var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+        _ref$decementBy = _ref.decementBy,
+        decementBy = _ref$decementBy === undefined ? 1 : _ref$decementBy;
+
+    return {
+        type: "DECREMENT",
+        decreaseBy: decementBy
+    };
+};
+
+var setCount = function setCount() {
+    var _ref2 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+        _ref2$value = _ref2.value,
+        value = _ref2$value === undefined ? 0 : _ref2$value;
+
+    return {
+        type: "SET",
+        value: value
+    };
+};
+
+var resetCount = function resetCount() {
+    return {
+        type: "RESET"
+    };
+};
+
+//Actions
 store.subscribe(function () {
     return console.log(store.getState());
 });
 
-store.dispatch(incrementCount({ incrementBy: 5 }));
+store.dispatch(incrementCount(3));
+store.dispatch(incrementCount());
+
+store.dispatch(decrementCount());
+store.dispatch(decrementCount({ decementBy: 13 }));
+
+store.dispatch(setCount());
+store.dispatch(setCount({ value: 10 }));
+
+store.dispatch(resetCount());
 
 //Action Creaters
 
