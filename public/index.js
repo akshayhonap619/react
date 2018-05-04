@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 75);
+/******/ 	return __webpack_require__(__webpack_require__.s = 77);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -22136,7 +22136,9 @@ var SkiDayRow = exports.SkiDayRow = function SkiDayRow(props) {
 module.exports = {"days":[{"resort":"Sqaw Valley","date":"1/2/2017","powder":true,"backcountry":false},{"resort":"KirkWood","date":"3/28/2017","powder":false,"backcountry":false},{"resort":"Mt. Tallac","date":"1/2/2017","powder":false,"backcountry":true}]}
 
 /***/ }),
-/* 75 */
+/* 75 */,
+/* 76 */,
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22146,21 +22148,21 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _SkiDayCount = __webpack_require__(76);
+var _SkiDayCount = __webpack_require__(78);
 
-var _SkiDay = __webpack_require__(77);
+var _SkiDay = __webpack_require__(79);
 
 var _SkiDayList = __webpack_require__(70);
 
-var _State = __webpack_require__(78);
+var _State = __webpack_require__(80);
 
 var _Counter = __webpack_require__(69);
 
-var _Cache = __webpack_require__(79);
+var _Cache = __webpack_require__(81);
 
 __webpack_require__(63);
 
-var _App = __webpack_require__(80);
+var _App = __webpack_require__(82);
 
 var _days = __webpack_require__(74);
 
@@ -22205,7 +22207,7 @@ _reactDom2.default.render(_react2.default.createElement(_App.App, null), documen
 // )
 
 /***/ }),
-/* 76 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22280,7 +22282,7 @@ var SkiDayCount = exports.SkiDayCount = function SkiDayCount(props, _ref) {
 };
 
 /***/ }),
-/* 77 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22298,7 +22300,7 @@ var SkiDay = exports.SkiDay = function SkiDay() {
 };
 
 /***/ }),
-/* 78 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22358,7 +22360,7 @@ var State = exports.State = function (_React$Component) {
 }(_react2.default.Component);
 
 /***/ }),
-/* 79 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22590,7 +22592,7 @@ var TableHead = function TableHead() {
 };
 
 /***/ }),
-/* 80 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

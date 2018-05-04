@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 81);
+/******/ 	return __webpack_require__(__webpack_require__.s = 83);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -21925,7 +21925,9 @@ var Counter = exports.Counter = function (_React$Component) {
 /* 78 */,
 /* 79 */,
 /* 80 */,
-/* 81 */
+/* 81 */,
+/* 82 */,
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21941,9 +21943,9 @@ var _reactDom2 = _interopRequireDefault(_reactDom);
 
 var _Counter = __webpack_require__(69);
 
-var _Calculator = __webpack_require__(82);
+var _Calculator = __webpack_require__(84);
 
-var _Member = __webpack_require__(83);
+var _Member = __webpack_require__(85);
 
 __webpack_require__(63);
 
@@ -21979,7 +21981,7 @@ _reactDom2.default.render(_react2.default.createElement(_Calculator.Calculator, 
 _reactDom2.default.render(_react2.default.createElement(_Member.Member, null), document.getElementById("member"));
 
 /***/ }),
-/* 82 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22072,7 +22074,7 @@ var Temperature = function Temperature(props) {
 };
 
 /***/ }),
-/* 83 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
