@@ -22,6 +22,19 @@ const expenseReducer =(state =[],action)=>{
         case 'ADDEXPENSE':
             return [...state,action.expense];
 
+        case 'DELETEEXPENSE':
+            return state.filter((expense)=> expense.id!= action.id)
+
+        case 'UPDATEEXPENSE':
+            return state.map((expense)=>{
+                if(expense.id == action.id)
+                    return {
+                        ...expense,
+                        ...action.expense
+                    }
+                else
+                    return expense
+            })
 
         default:
             return state;
@@ -60,6 +73,32 @@ const AddExpense= ({description = null,amount = 0,createdAt = Date.now()} = {})=
     }
 })
 
-store.dispatch(AddExpense({
+
+//Delete Expense
+const deleteExpense = (id)=>({
+    type : "DELETEEXPENSE",
+    id
+})
+
+//Update Expense
+const updateExpense = (id,expense)=>({
+    type : "UPDATEEXPENSE",
+    id,
+    expense : expense
+})
+
+
+//Actions
+const exp = store.dispatch(AddExpense({
     description : "Rent"
 }))
+
+const exp1 = store.dispatch(AddExpense())
+
+store.dispatch(deleteExpense(exp1.expense.id))
+
+const exp2 = store.dispatch(AddExpense())
+
+store.dispatch(updateExpense(exp2.expense.id,{description : "Milk"}))
+
+store.dispatch(updateExpense(exp.expense.id,{amount : 500}))
