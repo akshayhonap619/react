@@ -331,6 +331,8 @@ module.exports = bytesToUuid;
 "use strict";
 
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _redux = __webpack_require__(88);
 
 var _uuid = __webpack_require__(93);
@@ -338,6 +340,8 @@ var _uuid = __webpack_require__(93);
 var _uuid2 = _interopRequireDefault(_uuid);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 var state = {
     expenses: [{
@@ -360,7 +364,17 @@ var expenseReducer = function expenseReducer() {
 
     switch (action.type) {
         case 'ADDEXPENSE':
-            return state.concat(action.expense);
+            return [].concat(_toConsumableArray(state), [action.expense]);
+
+        case 'DELETEEXPENSE':
+            return state.filter(function (expense) {
+                return expense.id !== action.id;
+            });
+
+        case 'UPDATEEXPENSE':
+            return state.map(function (expense) {
+                if (expense.id === action.id) return _extends({}, expense, action.expense);else return expense;
+            });
 
         default:
             return state;
@@ -372,6 +386,12 @@ var filterReducer = function filterReducer() {
     var action = arguments[1];
 
     switch (action.type) {
+
+        case 'SETTEXT':
+            return _extends({}, state, {
+                text: action.filter.text
+            });
+
         default:
             return state;
     }
@@ -411,9 +431,53 @@ var AddExpense = function AddExpense() {
     };
 };
 
-store.dispatch(AddExpense({
+var DeleteExpense = function DeleteExpense(id) {
+    return {
+        type: 'DELETEEXPENSE',
+        id: id
+    };
+};
+
+var UpdateExpense = function UpdateExpense(id) {
+    var _ref2 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+        amount = _ref2.amount,
+        description = _ref2.description;
+
+    return {
+        type: "UPDATEEXPENSE",
+        id: id,
+        expense: {
+            amount: amount,
+            description: description
+        }
+
+    };
+};
+
+var setTextFilter = function setTextFilter() {
+    var text = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+    return {
+        type: 'SETTEXT',
+        filter: {
+            text: text
+        }
+    };
+};
+//-----------------------------------------------
+
+var expense1 = store.dispatch(AddExpense({
     description: "Rent"
 }));
+
+var expense2 = store.dispatch(AddExpense());
+
+store.dispatch(DeleteExpense(expense2.expense.id));
+
+expense2 = store.dispatch(AddExpense());
+console.log(store.dispatch(UpdateExpense(expense2.expense.id, { amount: 100, description: "Milk" })));
+
+store.dispatch(setTextFilter('Rent'));
+store.dispatch(setTextFilter());
 
 /***/ }),
 
