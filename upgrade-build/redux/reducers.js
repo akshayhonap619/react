@@ -23,13 +23,14 @@ const expenseReducer =(state =[],action)=>{
             return [...state,action.expense];
 
         case 'DELETEEXPENSE':
-            return state.filter((expense)=>expense.id!==action.id )
+            return state.filter((expense)=> expense.id!= action.id)
 
         case 'UPDATEEXPENSE':
             return state.map((expense)=>{
-                if(expense.id === action.id)
-                    return{...expense,
-                            ...action.expense
+                if(expense.id == action.id)
+                    return {
+                        ...expense,
+                        ...action.expense
                     }
                 else
                     return expense
@@ -42,13 +43,6 @@ const expenseReducer =(state =[],action)=>{
 
 const filterReducer = (state = filters,action)=>{
     switch(action.type){
-
-        case 'SETTEXT':
-            return{
-                ...state,
-                text : action.filter.text
-            }
-
         default:
             return state;
     }
@@ -56,9 +50,9 @@ const filterReducer = (state = filters,action)=>{
 
 const store = createStore(
     combineReducers({
-            expenses : expenseReducer,
-            filters : filterReducer
-        })
+        expenses : expenseReducer,
+        filters : filterReducer
+    })
 )
 
 console.log(store.getState());
@@ -79,42 +73,32 @@ const AddExpense= ({description = null,amount = 0,createdAt = Date.now()} = {})=
     }
 })
 
-const DeleteExpense =(id)=> ({
-    type : 'DELETEEXPENSE',
-    id : id
+
+//Delete Expense
+const deleteExpense = (id)=>({
+    type : "DELETEEXPENSE",
+    id
 })
 
-
-const UpdateExpense = (id,{amount,description}={})=>({
+//Update Expense
+const updateExpense = (id,expense)=>({
     type : "UPDATEEXPENSE",
     id,
-    expense : {
-        amount,
-        description
-    }
-
+    expense : expense
 })
 
-const setTextFilter=(text = "")=>({
-    type: 'SETTEXT',
-    filter :{
-        text
-    }
-})
-//-----------------------------------------------
 
-const expense1 = store.dispatch(AddExpense({
+//Actions
+const exp = store.dispatch(AddExpense({
     description : "Rent"
 }))
 
-var expense2 = store.dispatch(AddExpense())
+const exp1 = store.dispatch(AddExpense())
 
-store.dispatch(DeleteExpense(expense2.expense.id))
+store.dispatch(deleteExpense(exp1.expense.id))
 
-expense2 = store.dispatch(AddExpense())
-console.log(store.dispatch(UpdateExpense(expense2.expense.id ,{amount: 100, description : "Milk"})))
+const exp2 = store.dispatch(AddExpense())
 
-store.dispatch(AddExpense({description:"Utilities", amount: 200}))
+store.dispatch(updateExpense(exp2.expense.id,{description : "Milk"}))
 
-store.dispatch(setTextFilter('Rent'))
-store.dispatch(setTextFilter())
+store.dispatch(updateExpense(exp.expense.id,{amount : 500}))

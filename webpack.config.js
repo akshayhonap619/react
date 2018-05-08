@@ -14,9 +14,8 @@ module.exports = {
         path: path.resolve(__dirname, 'public')
 
     },
-
     devServer : {
-        contentBase : path.join(__dirname,'public')
+        contentBase : path.join(__dirname, 'public')
     },
     module: {
         rules: [
