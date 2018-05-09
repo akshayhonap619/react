@@ -1,20 +1,25 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {Expense1} from "./AddExpense";
 
 import Filters from './Filters'
+import {filterData} from "../../redux/selectors/expense-selector";
+import {deleteExpense,AddExpense,updateExpense} from "../../redux/actions/expense-actions";
 
 const ExpenseList=(props)=>(
     <div>
         <h1> This is Expensify List</h1>
+        <Filters name="Text Filter"/>
+        <hr/>
         {props.expenses.map((expense,i)=>(
-            <ExpenseListItem expense={expense} key={i}/>
+            <Expense1 expense={expense} key={i} />
         ))}
 
     </div>
 )
 
 const mapStatetoProps=(state)=>({
-    expenses : state.expenses
+    expenses : filterData(state.expenses, state.filters)
 })
 
 export default connect (mapStatetoProps)(ExpenseList)
@@ -22,11 +27,14 @@ export default connect (mapStatetoProps)(ExpenseList)
 
 const ExpenseListItem = (props)=>(
     <div>
-        <Filters store={props.store}/>
+
         <h3>Name :{props.expense.description}</h3>
-        <h6>Amount : {props.expense.amount}</h6>
+        <h3>Amount : {props.expense.amount}</h3>
+        <button onClick={(e)=>props.dispatch(deleteExpense(props.expense.id))}>Delete</button>
     </div>
 
 )
+
+const Exp2 =connect()(ExpenseListItem)
 
 //Clock

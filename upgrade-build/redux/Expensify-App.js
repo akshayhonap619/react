@@ -9,12 +9,12 @@ import {store} from '../redux/store/configureStore'
 import {AddExpense,updateExpense,deleteExpense} from "./actions/expense-actions";
 import {setTextFilter} from "./actions/filter-actions";
 
-console.log(store.getState())
 
-setTimeout(()=>  store.dispatch(AddExpense({description:'Rent', amount : 500}) ) , 3000)
+
+store.dispatch(AddExpense({description:'Rent', amount : 500}) )
 
 store.dispatch(setTextFilter("Rent"))
-
+console.log(store.getState())
 ReactDOM.render(
     <Provider store={store}>
         <ExpenseList />
