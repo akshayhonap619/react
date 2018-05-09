@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 import {connect} from 'react-redux'
-
+import {setTextFilter} from '../../redux/actions/filter-actions'
 // class Filters extends React.Component{
 //     constructor(props){
 //         super(props)
@@ -27,7 +27,7 @@ import {connect} from 'react-redux'
 
 
 const Filters = (props)=>(
-    <input type="text" value={props.filters.text}/>
+    <input type="text" value={props.filters.text}  onChange={(e)=>props.dispatch(setTextFilter(e.target.value))} />
 )
 
 const mapStateToProps = (state)=>({

@@ -22,7 +22,7 @@ export default connect (mapStatetoProps)(ExpenseList)
 
 const ExpenseListItem = (props)=>(
     <div>
-        <Filters />
+        <Filters store={props.store}/>
         <h3>Name :{props.expense.description}</h3>
         <h6>Amount : {props.expense.amount}</h6>
     </div>
