@@ -1,36 +1,43 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {updateExpense,deleteExpense} from "../../redux/actions/expense-actions";
+import moment from "moment/moment";
 
-class AddExpenseto1 extends React.Component{
+import 'react-dates/initialize';
+import {SingleDatePicker} from 'react-dates'
 
+import 'react-dates/lib/css/_datepicker.css';
+
+class ExpenseAdder extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            description : "Hello",
-            expense : props.expense,
-            editable : false
+            description : '',
+            amount : 0,
+            startDate : moment(),
+            datePickerfocus : true
         }
-        this.dispatch = props.dispatch.bind(this)
     }
 
-    render(){
-         return (
-            <div>
-               Name : <input type="text" value={this.state.expense.description}   onChange={(e)=>{if(this.state.editable){this.setState({expense :{...this.state.expense, description :e.target.value }})}}}/>
-               Amount : <input type="text" value={this.state.expense.amount}   onChange={(e)=>{if(this.state.editable){this.setState({expense :{...this.state.expense, amount :e.target.value }})}}} />
-               <button onClick={(e)=>{this.dispatch(this.state.expense.id)}}>Delete</button>
-               <button onClick={(e)=>{
-                   this.setState({editable : !this.state.editable})
-               }}>{(this.state.editable)? "Save" : "Edit"}</button>
-            </div>
-        )
-    }
 
+
+render(){
+    return (
+        <div>
+            <input type="text" value ={this.state.description} onChange={(e)=>this.setState({description : e.target.value})}/>
+            <input type="number" value = {this.state.amount} onChange={(e)=>this.setState({amount : e.target.value})}/>
+            <h3>Date : {moment(this.state.startDate).format("DD MMM, YYYY")}</h3>
+
+            <SingleDatePicker
+                date={this.state.startDate}
+                onDateChange= { (date) => this.setState({startDate: date })} // PropTypes.func.isRequired
+                focused={this.state.focused} // PropTypes.bool
+                onFocusChange={ ({ focused }) => this.setState({datePickerfocus : focused })} />
+        </div>
+    )
+}
 }
 
-const mapStatetoProps = (state)=>({
-    expenses : state.expenses
-})
-
-export const Expense1 = connect()(AddExpenseto1)
+export const ExpenseAddForm = (props)=>(
+    <ExpenseAdder/>
+)
