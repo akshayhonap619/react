@@ -17,7 +17,7 @@ const ExpenseList=(props)=>(
             <Exp2 expense={expense} key={i} />
         ))}
         <br/><hr/>
-        <ExpenseAddForm/>
+        <ExpenseAddForm dispatch={props.dispatch}/>
     </div>
 )
 
@@ -26,6 +26,8 @@ const mapStatetoProps=(state)=>({
 })
 
 export default connect (mapStatetoProps)(ExpenseList)
+
+
 
 
 const ExpenseListItem = (props)=>(

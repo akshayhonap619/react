@@ -1,12 +1,12 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {updateExpense,deleteExpense} from "../../redux/actions/expense-actions";
+import {AddExpense,updateExpense,deleteExpense} from "../../redux/actions/expense-actions";
 import moment from "moment/moment";
 
-import 'react-dates/initialize';
-import {SingleDatePicker} from 'react-dates'
 
-import 'react-dates/lib/css/_datepicker.css';
+import DatePicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css';
+
 
 class ExpenseAdder extends React.Component{
     constructor(props){
@@ -15,25 +15,30 @@ class ExpenseAdder extends React.Component{
             description : '',
             amount : 0,
             startDate : moment(),
-            datePickerfocus : true
         }
+        this.submitForm = this.submitForm.bind(this)
     }
 
-
+submitForm(e){
+        e.preventDefault()
+        if(this.state.startDate && this.state.amount && this.state.description) {
+            this.props.dispatch(AddExpense({...this.state}))
+        }
+            else
+            console.log("Error")
+}
 
 render(){
     return (
-        <div>
+        <form onSubmit={this.submitForm}>
             <input type="text" value ={this.state.description} onChange={(e)=>this.setState({description : e.target.value})}/>
             <input type="number" value = {this.state.amount} onChange={(e)=>this.setState({amount : e.target.value})}/>
             <h3>Date : {moment(this.state.startDate).format("DD MMM, YYYY")}</h3>
 
-            <SingleDatePicker
-                date={this.state.startDate}
-                onDateChange= { (date) => this.setState({startDate: date })} // PropTypes.func.isRequired
-                focused={this.state.focused} // PropTypes.bool
-                onFocusChange={ ({ focused }) => this.setState({datePickerfocus : focused })} />
-        </div>
+            <DatePicker selected={this.state.startDate}
+                        onChange={(date)=> this.setState({startDate : date})} />
+                <input type="submit" value="Submit"/>
+        </form>
     )
 }
 }
