@@ -11,7 +11,7 @@ import {setTextFilter} from "./actions/filter-actions";
 
 
 
-store.dispatch(AddExpense({description:'Rent', amount : 500}) )
+//store.dispatch(AddExpense({description:'Rent', amount : 500}) )
 
 //store.dispatch(setTextFilter("Rent"))
 

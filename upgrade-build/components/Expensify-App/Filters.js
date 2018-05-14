@@ -32,9 +32,12 @@ const Filters = (props)=>(
     <div>
         <h3>{props.name} :  </h3><input type="text" value={props.filters.text}  onChange={(e)=>props.dispatch(setTextFilter(e.target.value))} />
         <h3> SortBy </h3>
-        <select onChange={(e)=>props.dispatch(setSortBy())}>
+        <select id="filter" onChange={(e)=>{
+            let value = document.getElementById("filter").value;
+            props.dispatch(setSortBy(value))}
+        }>
             <option value="amount">Amount</option>
-            <option value="startDate">Start Date</option>
+            <option value="date">Start Date</option>
         </select>
     </div>
 )

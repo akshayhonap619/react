@@ -10,33 +10,41 @@ import 'react-datepicker/dist/react-datepicker.css';
 class ExpenseAdder extends React.Component{
     constructor(props){
         super(props)
+
         this.state = {
-            description : '',
-            amount : 0,
-            startDate : moment(),
+            id : (this.props.expense ) ? this.props.expense.id : undefined,
+            description : (this.props.expense ) ? this.props.expense.description :'',
+            amount : (this.props.expense) ? this.props.expense.amount : 0,
+            startDate : (this.props.expense) ? this.props.expense.startDate :moment(),
         }
         this.submitForm = this.submitForm.bind(this)
     }
 
 submitForm(e){
-        e.preventDefault()
-        if(this.state.startDate && this.state.amount && this.state.description) {
-            this.props.dispatch(AddExpense({
-                description : this.state.description,
+    e.preventDefault()
+        if(this.state.amount && this.state.description && this.state.startDate){
+            this.props.onSubmit({
+                id : this.state.id,
+                 description : this.state.description,
                 amount : this.state.amount,
                 startDate : this.state.startDate
-            }))
+            })
+            this.setState({
+                description : '',
+                amount : 0,
+                startDate : moment()
+            })
         }
-
-            else
+        else{
             console.log("Error")
-}
+        }
+    }
 
 render(){
     return (
         <form onSubmit={this.submitForm}>
             <input type="text" value ={this.state.description} onChange={(e)=>this.setState({description : e.target.value})}/>
-            <input type="number" value = {this.state.amount} onChange={(e)=>this.setState({amount : e.target.value})}/>
+            <input type="number" value = {this.state.amount} onChange={(e)=>this.setState({amount :  parseFloat(e.target.value)})}/>
             <h3>Date : {moment(this.state.startDate).format("DD MMM, YYYY")}</h3>
 
             <DatePicker selected={this.state.startDate}
@@ -47,10 +55,13 @@ render(){
 }
 }
 
-/*
-export const ExpenseAddForm = (props)=>(
-    <ExpenseAdder/>
-)
-*/
 
-export const AddExpenseForm = connect()(ExpenseAdder)
+ const AddExpenseFormComponent = (props)=>(
+    <ExpenseAdder
+        expense={props.expense}
+        onSubmit={props.onSubmit}/>
+)
+
+
+
+export const AddExpenseForm = connect()(AddExpenseFormComponent)

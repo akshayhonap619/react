@@ -2,13 +2,13 @@ import uuid from "uuid";
 
 //Add Expense
 
-export const AddExpense= ({description = "",amount = 0,createdAt = Date.now()} = {})=>({
+export const AddExpense= ({description = "",amount = 0,startDate = Date.now()} = {})=>({
     type : "ADDEXPENSE",
     expense : {
         id : uuid(),
         description,
         amount,
-        createdAt
+        startDate
     }
 })
 
@@ -20,7 +20,7 @@ export const deleteExpense = (id)=>({
 })
 
 //Update Expense
-export const updateExpense = (id,expense)=>({
+export const updateExpense = (expense,id)=>({
     type : "UPDATEEXPENSE",
     id,
     expense : expense
