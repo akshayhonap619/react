@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 import {AddExpense,updateExpense,deleteExpense} from "../../redux/actions/expense-actions";
 import moment from "moment/moment";
 
-
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -22,8 +21,13 @@ class ExpenseAdder extends React.Component{
 submitForm(e){
         e.preventDefault()
         if(this.state.startDate && this.state.amount && this.state.description) {
-            this.props.dispatch(AddExpense({...this.state}))
+            this.props.dispatch(AddExpense({
+                description : this.state.description,
+                amount : this.state.amount,
+                startDate : this.state.startDate
+            }))
         }
+
             else
             console.log("Error")
 }
@@ -43,6 +47,10 @@ render(){
 }
 }
 
+/*
 export const ExpenseAddForm = (props)=>(
     <ExpenseAdder/>
 )
+*/
+
+export const AddExpenseForm = connect()(ExpenseAdder)

@@ -13,7 +13,10 @@ import {setTextFilter} from "./actions/filter-actions";
 
 store.dispatch(AddExpense({description:'Rent', amount : 500}) )
 
-store.dispatch(setTextFilter("Rent"))
+//store.dispatch(setTextFilter("Rent"))
+
+store.subscribe(()=>console.log(store.getState()))
+
 console.log(store.getState())
 ReactDOM.render(
     <Provider store={store}>
